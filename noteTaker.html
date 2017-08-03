@@ -1,0 +1,119 @@
+<!doctype html>
+<style>
+
+/* Add a black background color to the top navigation */
+.topnav {
+    background-color: #FFB900;
+    overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+    float: left;
+    display: block;
+    color: #FFE9AE;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+    background-color: #FEDB7E;
+    color: black;
+   text-decoration: none;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+#centerField {
+float:right;
+width:65%;
+}
+#leftField{
+float: left;
+margin: 0 0 10px 10px;
+width:25%;
+word-wrap: break-word;
+border-width: 0px 2px 0px 0;
+    border-style: solid;
+    -webkit-border-image:
+      -webkit-gradient(linear, 0 0, 100% 0, from(black), to(rgba(0, 0, 0, 0))) 1 100%;
+    -webkit-border-image:
+      -webkit-linear-gradient(left, black, rgba(0, 0, 0, 0)) 1 100%;
+    -moz-border-image:
+      -moz-linear-gradient(left, black, rgba(0, 0, 0, 0)) 1 100%;
+    -o-border-image:
+      -o-linear-gradient(left, black, rgba(0, 0, 0, 0)) 1 100%;
+    border-image:
+      linear-gradient(to bottom, black, rgba(0, 0, 0, 0)) 1 100%;
+}
+#style{
+background-color:#fffef9;
+}
+button {
+    background-color: white;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 10px;
+    padding: 2px 10px;
+   -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    border: 1.5px solid #FEDB7E;/
+}
+button:hover {
+    background-color: #FFB900; /* Green */
+    color: white;
+}
+</style>
+<html lang="en">
+<head>
+<div id="wrapper">
+  <div class="topnav" id="myTopnav">
+  <a href="#home">NoteTaker</a>
+</div>
+<title>Note Taker</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"></head>
+<body id="style">
+<div id ="centerField">
+  <h1> New Note</h1>
+  <textarea  id="textField"rows="8" cols="70%"  placeholder ="Begin your new note."></textarea>
+  <br>
+  <button type="button" id="submitButton" class="btn btn-warning">Submit Information</button>
+</div>
+<div id ="leftField" >
+  <h2> Saved</h2>
+   <p id='result'></p>
+</div>
+<div id="container"></div>
+</div>
+</div>
+</body>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+$('#submitButton').click(function() {
+  var textField = $('#textField').val();
+  $('#result').append('<div id="note"><p>'+textField+'</p><button class="edit">Edit</button> <button id="delete" class="delete">Delete</button></div>');
+  $('#textField').val('');
+});
+
+$('body').on('click','.delete',function() {
+    $(this).parent().remove();
+});
+
+$('body').on('click','.edit',function() {
+    var note = $(this).closest('div').find('p').text();
+    $(this).parent().remove();
+      $('#textField').val(note);
+});
+</script>
+
+</html>
